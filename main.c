@@ -2,7 +2,11 @@
 
 int main()
 {
-	int a = read("file.txt", O_RDONLY);
-	char *s = get_next_line(a);
-	printf("re=%s\n", s);
+	char *s;
+	int a = open("file.txt", O_RDONLY);
+	
+	while ((s = get_next_line(a)) != 0)
+	{
+		printf("re=%s\n", s);
+	}
 }
