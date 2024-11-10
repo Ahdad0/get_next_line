@@ -6,7 +6,7 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:12:04 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/10 13:01:29 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/10 15:27:48 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 
-void	get_next_line(int fd);
-char	*ft_argnew(char *p, int index);
+char	*get_next_line(int fd);
+char	*ft_str(char *p);
 int		check_newline(char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 

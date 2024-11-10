@@ -6,7 +6,7 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:33:00 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/10 13:16:05 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/10 15:23:06 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (len_of_src);
 }
 
-char	*ft_strcat(char *p)
+char	*ft_str(char *p)
 {
 	int i = 0;
 
-	while (p[i])
+	while (p[i] != '\n')
 		i++;
 
 	char *new = malloc(i + 1);
@@ -57,5 +57,11 @@ char	*ft_strcat(char *p)
 		free(new);
 		return (NULL);
 	}
-	while (p[i] != 
+	i = 0;
+	while (p[i] != '\n')
+	{
+		new[i] = p[i];
+		i++;
+	}
+	return (new);
 }
