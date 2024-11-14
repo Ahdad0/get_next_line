@@ -6,148 +6,104 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:33:00 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/10 22:38:00 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:11:14 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	check_newline(char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	size_t	len;
+	char	*p;
+	size_t	i;
+	size_t	j;
+
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	p = malloc(len + 1);
+	if (!p)
+		return (NULL);
+	while (s1[i])
+	{
+		p[i] = ((char *)s1)[i];
+		i++;
+	}
+	while (s2[j])
+		p[i++] = ((char *)s2)[j++];
+	p[i] = '\0';
+	return (p);
+}
+
+char	*ft_afterNewline(const char *s)
+{
+	char	*new;
+	int		i;
+	int		j;
+	int		len;
 
 	i = 0;
+	j = 0;
+	len = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	j = i;
 	while (s[i])
 	{
-		if (s[i] == '\n')
-			return (1);
 		i++;
+		len++;
 	}
-	return (0);
-}
-static char	*ft_strcat(char *dest, char const *src)
-{
-	int	i;
-	int	o;
-
-	i = 0;
-	o = 0;
-	while (dest[i])
-		i++;
-	while (src[o])
-		dest[i++] = src[o++];
-	dest[i] = '\0';
-	return (dest);
-}
-
-static char	*ft_strncat(char *dest, char const *src, size_t nb)
-{
-	int		i;
-	size_t	o;
-
-	i = 0;
-	o = 0;
-	while (dest[i])
-		i++;
-	while (src[o] && o < nb)
-		dest[i++] = src[o++];
-	dest[i] = '\0';
-	return (dest);
-}
-
-size_t	ft_strlcat(char *dest, char const *src, size_t size)
-{
-	size_t	len_dest;
-	size_t	len_src;
-	size_t	max;
-	size_t	sub;
-	size_t	i;
-
-	if (size == 0)
-		return (ft_strlen(src));
-	i = 0;
-	len_src = ft_strlen(src);
-	len_dest = ft_strlen(dest);
-	max = len_dest + len_src + 1;
-	sub = size - len_dest - 1;
-	if (size < len_dest)
-		return (size + len_src);
-	else if (size >= max)
-		ft_strcat(dest, src);
-	else if (len_dest < size && size <= max)
-		ft_strncat(dest, src, sub);
-	return (len_dest + len_src);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	unsigned int	len_of_src;
-	size_t			i;
-
-	i = 0;
-	len_of_src = ft_strlen(src);
-	if (size != 0)
-	{
-		while (src[i] && size - 1 > i)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (len_of_src);
-}
-
-char	*ft_str(char *p)
-{
-	int i = 0;
-
-	while (p[i] != '\n')
-		i++;
-
-	char *new = malloc(i + 1);
-	if (new == NULL)
+	new = malloc(len + 1);
+	if (!new)
 	{
 		free(new);
 		return (NULL);
 	}
 	i = 0;
-	while (p[i] != '\n')
+	while (s[j])
+		new[i++] = s[j++];
+	new[i] = '\0';
+	return (new);
+}
+
+void	ft_untilNewline(char *s)
+{
+	int		j;
+
+	j = 0;
+	while (s[j] && s[j] != '\n')
 	{
-		new[i] = p[i];
+		if (s[j] == '\n')
+			s[j + 1] = '\0';
+		j++;
+	}
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return (new);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }
 
 size_t	ft_strlen(const char *s)
 {
-	unsigned int	j;
+	size_t	j;
 
 	j = 0;
 	while (s[j])
 		j++;
 	return (j);
-}
-
-char	*ft_rts(char *s)
-{
-	int		i = 0;
-	int 	len = 0;
-	char	*p;
-	int		o = 0;
-
-	while (s[i] != '\n')
-		i++;
-	len = ft_strlen(s + i);
-	p = malloc(len + 1);
-	if (!p)
-	{
-		free(p);
-		return (NULL);
-	}
-	while (s[i])
-		p[o++] = s[i++];
-	p[o] = '\0';
-	return (p);
 }
