@@ -6,7 +6,7 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:33:00 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/14 12:11:14 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/14 19:02:24 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
-		return (NULL);
 	i = 0;
 	j = 0;
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
 	len = ft_strlen(s1) + ft_strlen(s2);
 	p = malloc(len + 1);
 	if (!p)
-		return (NULL);
+		return (free(p), NULL);
 	while (s1[i])
 	{
 		p[i] = ((char *)s1)[i];
@@ -38,19 +42,29 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (p);
 }
 
-char	*ft_afterNewline(const char *s)
+char	*ft_afterNewline(char *s)
 {
 	char	*new;
 	int		i;
 	int		j;
 	int		len;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	j = 0;
 	len = 0;
 	while (s[i] && s[i] != '\n')
 		i++;
-	j = i;
+	if (!s[i])
+	{
+		j = i;
+	}
+	else
+	{
+		j = i + 1;
+		i++;
+	}
 	while (s[i])
 	{
 		i++;
@@ -58,10 +72,7 @@ char	*ft_afterNewline(const char *s)
 	}
 	new = malloc(len + 1);
 	if (!new)
-	{
-		free(new);
 		return (NULL);
-	}
 	i = 0;
 	while (s[j])
 		new[i++] = s[j++];
@@ -73,13 +84,14 @@ void	ft_untilNewline(char *s)
 {
 	int		j;
 
+	if (!s)
+		return ;
 	j = 0;
 	while (s[j] && s[j] != '\n')
-	{
-		if (s[j] == '\n')
-			s[j + 1] = '\0';
 		j++;
-	}
+	while (s[j] == '\n' && s[j])
+		j++;
+	s[j] = '\0';
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -87,6 +99,8 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	while (s[i])
 	{
 		if (s[i] == (char)c)
@@ -102,6 +116,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	j;
 
+	if (!s)
+		return (0);
 	j = 0;
 	while (s[j])
 		j++;

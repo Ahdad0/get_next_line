@@ -7,6 +7,6 @@ int main()
 	
 	while ((s = get_next_line(a)) != 0)
 	{
-		printf("re=%s\n", s);
+		printf("re=%s", s);
 	}
 }
