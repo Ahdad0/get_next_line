@@ -12,16 +12,15 @@
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+static char *read_line(int fd, char *store)
 {
-	char		b[BUFFER_SIZE + 1];
-	static char	*ori;
-	char 		*temp;
-	int			i;
+	char	b[BUFFER_SIZE + 1];
+	char	*new_temp;
+	char	*temp;
+	int		i;
 
-	if (BUFFER_SIZE <= 0 || fd <= -1)
-		return (NULL);
-	temp = NULL;
+	temp = store;
+	store = NULL;
 	while (ft_strchr(temp, '\n') == NULL)
 	{
 		i = read(fd, b, BUFFER_SIZE);
@@ -33,12 +32,22 @@ char	*get_next_line(int fd)
 		if (i == 0)
 			break;
 		b[i] = '\0';
-		temp = ft_strjoin(ori, b);
-		ori = temp;
+		new_temp = ft_strjoin(temp, b);
+		free(temp);
+		temp = new_temp;
 	}
-	ori = ft_afterNewline(temp);
-	if (!ori)
-		return (free(ori), NULL);
-	ft_untilNewline(temp);
 	return (temp);
+}
+char	*get_next_line(int fd)
+{
+	char		*line;
+	char		*re;
+	static char	*store;
+
+	if (BUFFER_SIZE <= 0 || fd <= -1)
+		return (NULL);
+	line = read_line(fd, store);
+	re = ft_untilNewline(line);
+	store = ft_afterNewline(line);
+	return (re);
 }

@@ -80,18 +80,28 @@ char	*ft_afterNewline(char *s)
 	return (new);
 }
 
-void	ft_untilNewline(char *s)
+char	*ft_untilNewline(char *s)
 {
 	int		j;
+	int		i;
+	int		len;
+	char	*d;
 
 	if (!s)
-		return ;
+		return (NULL);
 	j = 0;
-	while (s[j] && s[j] != '\n')
-		j++;
-	while (s[j] == '\n' && s[j])
-		j++;
-	s[j] = '\0';
+	i = 0;
+	len = 0;
+	i = j;
+	while (s[len + j])
+		len++;
+	char *new = malloc(len + 1);
+	if (!new)
+		return (NULL);
+	j = 0;
+	while (s[i])
+		new[j++] = s[i++];
+	return (new);
 }
 
 char	*ft_strchr(const char *s, int c)
