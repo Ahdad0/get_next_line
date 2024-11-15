@@ -6,7 +6,7 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:33:00 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/14 19:02:24 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:48:38 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
 	char	*p;
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
 	i = 0;
 	j = 0;
-	if (!s1 && !s2)
-		return (NULL);
 	if (!s1)
 		s1 = "";
 	if (!s2)
@@ -35,64 +33,63 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		p[i] = ((char *)s1)[i];
 		i++;
-	}
+	}	
 	while (s2[j])
 		p[i++] = ((char *)s2)[j++];
 	p[i] = '\0';
 	return (p);
 }
 
-char    *ft_untilNewline(char *s)
+char	*ft_untilnewline(char *s)
 {
-    size_t  i;
-    char    *new;
+	size_t	i;
+	char	*new;
 
-    if (!s)
-        return (NULL);
-    i = 0;
-    while (s[i] && s[i] != '\n')
-        i++;
-    if (s[i] == '\n')
-        i++;
-    new = malloc(i + 1);
-    if (!new)
-        return (NULL);
-    i = 0;
-    while (s[i] && s[i] != '\n')
-    {
-        new[i] = s[i];
-        i++;
-    }
-    if (s[i] == '\n')
-        new[i++] = '\n';
-    new[i] = '\0';
-    return (new);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (s[i] == '\n')
+		i++;
+	new = malloc(i + 1);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+	{
+		new[i] = s[i];
+		i++;
+	}
+	if (s[i] == '\n')
+		new[i++] = '\n';
+	new[i] = '\0';
+	return (new);
 }
 
-char    *ft_afterNewline(char *s)
+char	*ft_afternewline(char *s)
 {
-    char    *new;
-    int     i;
-    int     j;
+	char	*new;
+	int		i;
+	int		j;
 
-    if (!s)
-        return (NULL);
-    i = 0;
-    while (s[i] && s[i] != '\n')
-        i++;
-    if (!s[i])
-        return (NULL);
-    i++;
-    new = malloc(ft_strlen(s) - i + 1);
-    if (!new)
-        return (NULL);
-    j = 0;
-    while (s[i])
-        new[j++] = s[i++];
-    new[j] = '\0';
-    return (new);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (!s[i])
+		return (NULL);
+	i++;
+	new = malloc(ft_strlen(s) - i + 1);
+	if (!new)
+		return (NULL);
+	j = 0;
+	while (s[i])
+		new[j++] = s[i++];
+	new[j] = '\0';
+	return (new);
 }
-
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -122,24 +119,4 @@ size_t	ft_strlen(const char *s)
 	while (s[j])
 		j++;
 	return (j);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	len;
-	char	*p;
-	int		i;
-
-	len = ft_strlen(s);
-	i = 0;
-	p = malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (s[i])
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
 }

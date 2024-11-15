@@ -22,9 +22,8 @@
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_untilNewline(char *s);
-char	*ft_afterNewline(char *s);
+char	*ft_untilnewline(char *s);
+char	*ft_afternewline(char *s);
 size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
 
 #endif
