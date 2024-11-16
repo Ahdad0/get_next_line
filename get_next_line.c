@@ -29,6 +29,7 @@ static char	*ft_strdup(const char *s)
 		i++;
 	}
 	p[i] = '\0';
+
 	return (p);
 }
 
