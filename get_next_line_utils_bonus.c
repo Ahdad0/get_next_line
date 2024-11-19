@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/19 17:22:20 by abahaded          #+#    #+#             */
+/*   Updated: 2024/11/19 17:22:27 by abahaded         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 char	*ft_strjoinn(char const *s1, char const *s2)
@@ -21,7 +33,7 @@ char	*ft_strjoinn(char const *s1, char const *s2)
 	{
 		p[i] = ((char *)s1)[i];
 		i++;
-	}	
+	}
 	while (s2[j])
 		p[i++] = ((char *)s2)[j++];
 	p[i] = '\0';

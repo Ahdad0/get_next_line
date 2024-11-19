@@ -6,7 +6,7 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:59:10 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/18 15:59:16 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:22:12 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		p[i] = ((char *)s1)[i];
 		i++;
-	}	
+	}
 	while (s2[j])
 		p[i++] = ((char *)s2)[j++];
 	p[i] = '\0';
