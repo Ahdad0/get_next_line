@@ -6,13 +6,13 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:22:20 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/19 17:22:27 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:20:56 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_strjoinn(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*p;
 	size_t	i;
@@ -25,7 +25,7 @@ char	*ft_strjoinn(char const *s1, char const *s2)
 		s1 = "";
 	if (!s2)
 		s2 = "";
-	len = ft_strlenn(s1) + ft_strlenn(s2);
+	len = ft_strlen(s1) + ft_strlen(s2);
 	p = malloc(len + 1);
 	if (!p)
 		return (NULL);
@@ -40,7 +40,7 @@ char	*ft_strjoinn(char const *s1, char const *s2)
 	return (p);
 }
 
-char	*ft_untilnewlinee(char *s)
+char	*ft_untilnewline(char *s)
 {
 	size_t	i;
 	char	*new;
@@ -67,7 +67,7 @@ char	*ft_untilnewlinee(char *s)
 	return (new);
 }
 
-char	*ft_afternewlinee(char *s)
+char	*ft_afternewline(char *s)
 {
 	char	*new;
 	int		i;
@@ -81,7 +81,7 @@ char	*ft_afternewlinee(char *s)
 	if (!s[i])
 		return (NULL);
 	i++;
-	new = malloc(ft_strlenn(s) - i + 1);
+	new = malloc(ft_strlen(s) - i + 1);
 	if (!new)
 		return (NULL);
 	j = 0;
@@ -91,7 +91,7 @@ char	*ft_afternewlinee(char *s)
 	return (new);
 }
 
-char	*ft_strchrr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
 
@@ -109,7 +109,7 @@ char	*ft_strchrr(const char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlenn(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	j;
 

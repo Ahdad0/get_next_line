@@ -6,7 +6,7 @@
 /*   By: abahaded <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:21:44 by abahaded          #+#    #+#             */
-/*   Updated: 2024/11/19 17:21:50 by abahaded         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:23:52 by abahaded         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strchrr(const char *s, int c);
-char	*ft_strjoinn(char const *s1, char const *s2);
-char	*ft_untilnewlinee(char *s);
-char	*ft_afternewlinee(char *s);
-size_t	ft_strlenn(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_untilnewline(char *s);
+char	*ft_afternewline(char *s);
+size_t	ft_strlen(const char *s);
 
 #endif
