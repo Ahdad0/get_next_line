@@ -30,3 +30,9 @@ Compile the project using the provided source files. For example:
 
 ```bash
 gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c -o gnl
+```
+
+For the bonus version:
+```bash
+gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line_bonus.c get_next_line_utils_bonus.c -o gnl_bonus
+```
